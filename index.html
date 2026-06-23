@@ -6,7 +6,7 @@
         content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ov3R: Open-Vocabulary Semantic 3D Reconstruction from RGB Videos</title>
+  <title>MAGiSt3R: Multi-Agent Feed-forward 3D Reconstruction from Monocular RGB Videos</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -61,8 +61,8 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Ov3R: Open-Vocabulary Semantic 3D Reconstruction from RGB Videos</h1>
-          <h1 class="title is-size-3" style="color:#5a6268;">CVPR 2026 (Highlight)</h1>
+          <h1 class="title is-1 publication-title">MAGiSt3R: Multi-Agent Feed-forward 3D Reconstruction from Monocular RGB Videos</h1>
+          <h1 class="title is-size-3" style="color:#5a6268;">ECCV 2026</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://zorangong.github.io/">Ziren Gong</a><sup>1</sup>,</span>
@@ -73,7 +73,7 @@
               <a href="https://fabiotosi92.github.io/">Fabio Tosi</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?hl=zh-CN&user=H_uqMz0AAAAJ">Jiawei Han</a><sup>3</sup>,
+              <a href="https://scholar.google.com/citations?user=P16bN2IAAAAJ&hl=zh-CN">Ninghui Xu</a><sup>3</sup>,
             </span>
             <span class="author-block">
               <a href="http://vision.deis.unibo.it/~smatt/Site/Home.html">Stefano Mattocia</a><sup>1</sup>,
@@ -89,7 +89,7 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>University of Bologna,</span>
             <span class="author-block"><sup>2</sup>University of Hongkong</span>
-            <span class="author-block"><sup>3</sup>Beijing Institute of Technology</span>
+            <span class="author-block"><sup>3</sup>Southeast University</span>
             <span class="author-block"><sup>4</sup>Monash University</span>
           </div>
 
@@ -97,7 +97,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2507.22052"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -107,7 +107,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=DfUkC-DVyrg"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -136,7 +136,7 @@
                   </a>
               <!-- results Link. -->
               <span class="link-block">
-                <a href="https://drive.google.com/file/d/10q3I0boBu5nDRzcZf1LoQTOkPDElDoFk/view?usp=sharing"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -159,7 +159,7 @@
              alt="NIS-SLAM architecture."/>
       <h2 class="subtitle has-text-justified">
         <p>
-        <b>Pipeline of Ov3R</b>. Ov3R is an Open-Vocabulary Semantic 3D Reconstruction Framework. It consists of two novel feed-forward modules, CLIP3R and 2D–3D OVS, and excels in both 3D reconstruction and open-vocabulary 3D semantic segmentation.
+        <b>Pipeline of MAGiSt3R</b>. Given RGB sequences from multiple agents, our method simultaneously predicts local point maps and camera poses. Then, the model merges submaps at the intra-agent level. On the server side, when loops are detected between agents, the same module fuses the local maps of multiple agents into a global map. Finally, pose graph optimization further mitigates cumulative drift.
         </p>
       </h2>
     </div>
@@ -174,13 +174,13 @@
         <h2 class="title is-3">Abstract</h2>
         <h2 class="content has-text-justified">
           <p>
-             We present Ov3R, a novel framework for open-vocabulary semantic 3D reconstruction from RGB video streams, designed to advance Spatial AI.
+             We present MAGiSt3R, a multi-agent 3D reconstruction framework performing reconstruction and camera tracking for monocular RGB videos at almost 10 FPS.
           </p>
           <p>
-             The system features two key components: CLIP3R, a CLIP-informed 3D reconstruction module that predicts dense point maps from overlapping clips alongside object-level semantics; and 2D–3D OVS, a 2D-3D open-vocabulary semantic module that lifts 2D features into 3D by learning fused descriptors integrating spatial, geometric, and semantic cues. Unlike prior methods, Ov3R incorporates CLIP semantics directly into the reconstruction process, enabling globally consistent geometry and fine-grained semantic alignment.
+             MAGiSt3R relies on a feed-forward model from the 3R family to process RGB videos and regress local point maps, and on a merging model, MAGMA, that combines local maps at both intra-agent and inter-agent levels to obtain the final global point map. Furthermore, MAGiSt3R performs pose graph optimization to mitigate cumulative camera drift occurring along the feed-forward pipeline.
           </p>
           <p>
-             Our framework achieves state-of-the-art performance in both dense 3D reconstruction and open-vocabulary 3D segmentation — marking a step forward toward real-time, semantics-aware Spatial AI.
+             We evaluate MAGiSt3R on both synthetic and real-world datasets, demonstrating its superior reconstruction and camera tracking accuracy compared to state-of-the-art approaches.
           </p>
         </h2>
       </div>
@@ -190,14 +190,13 @@
     <!-- Paper Framework -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Framework</h2>
+        <h2 class="title is-3">MAGMA</h2>
         <div class="content has-text-centered">
             <img style="width: 100%;" src="./static/images/overview_ov3r.jpg"
              alt="Reconstruction Result."/>
         </div>
         <p>
-          <strong><font size="4">Annotations:</font></strong> Given RGB-only videos, we first apply CLIP3R to produce scene points while SAM predicts 2D segments. Each 2D segment is matched to its corresponding 3D points to obtain 3D semantics. 
-          Next, the 2D-3D OVS extracts the fused 2D-3D descriptor to compute the cosine similarity with the text embeddings corresponding to a set of semantic classes.
+          <strong><font size="4">Annotations:</font></strong> Given a global submap, a keyframe set, and a local submap, the MAGMA module merges the local submap into a global map with poses in a unified coordinate system. First, we use retrieval to obtain the most relevant frames to form the inputs, reference set and registering set. Next, we encode their point maps and aggregate these geometric features with visual tokens, spatial tokens, and camera tokens. Then, we decode and predict global point maps.
         </p>
         </h2>
       </div>
@@ -219,8 +218,8 @@
           </div>
           <h2 class="content has-text-justified">
             <p>
-              <strong><font size="4">Annotations:</font></strong> We present open-vocabulary segmentation results of several different objects. 
-              Ov3R demonstrates accurate segmentations for diverse situations, e.g. multiple objects (pillows, chairs), small objects (vases), and large objects (tables). 
+              <strong><font size="4">Annotations:</font></strong> We present 3D reconstruction results with multi-agent settings on ReplicaMultiagent. To compare with the existing baselines, we use RANSAC + ICP (RICP) to combine multi-agent reconstructions for these baselines when detecting loop closures.
+              MAGiSt3R achieves more accurate recosntruction quality with less drifts between multiple agents.
             </p>
           </h2>
           <div class="has-text-centered">
@@ -229,8 +228,8 @@
           </div>
           <h2 class="content has-text-justified">
             <p>
-              <strong><font size="4">Annotations:</font></strong> For each scene, we provide ground truth pointmaps as references, and compare our reconstructed indoor scenes against SLAM3R and Spann3R.
-              Ov3R presents stronger performance on geometry consistency and accuracy, while SLAM3R outputs misaligned recosntructions and Spann3R predicts very sparse pointmaps. 
+              <strong><font size="4">Annotations:</font></strong> To test on more challenging scenes, we collect two sequences with less overlaps and dynamic objects in an indoor scene to simulate the multi-agent reconstruction.
+              MAGiSt3R filters out dynamic objects and achieve accurate reconstructions. 
             </p>
           </h2>
         
@@ -242,9 +241,9 @@
     <!-- Results -->
     <div class="columns has-text-justified">
       <div class="column is-full-width">
-        <h2 class="title is-3">Reconstruction & Segmentation Results</h2>
+        <h2 class="title is-3">Reconstruction & Tracking Results</h2>
           <p>
-              Our final reconstruction and segmentation results are available now. You can find it in the above <i>Results</i> button or you can download it through <a href="https://drive.google.com/file/d/10q3I0boBu5nDRzcZf1LoQTOkPDElDoFk/view?usp=sharing">Google Drive</a>.
+              Our final reconstruction and segmentation results are available now. You can find it in the above <i>Results</i> button or you can download it through <a href="">Google Drive</a>.
           </p>
       </div>
     </div>
