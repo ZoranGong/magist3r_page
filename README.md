@@ -1,6 +1,6 @@
 # MAGiSt3R
 
-This is the repository that contains source code for the [MAGiSt3R website](https://zorangong.github.io/Ov3R_page/).
+This is the repository that contains source code for the [MAGiSt3R website](https://zorangong.github.io/magist3r_page/).
 
 If you find Nerfies useful for your work please cite:
 ```
