@@ -4,11 +4,11 @@ This is the repository that contains source code for the [MAGiSt3R website](http
 
 If you find Nerfies useful for your work please cite:
 ```
-@article{gong2025ov3r,
-  title={Ov3R: Open-Vocabulary Semantic 3D Reconstruction from RGB Videos},
-  author={Gong, Ziren and Li, Xiaohan and Tosi, Fabio and Han, Jiawei and Mattoccia, Stefano and Cai, Jianfei and Poggi, Matteo},
-  journal={arXiv preprint arXiv:2507.22052},
-  year={2025}
+@inproceedings{gong2026magist3r,
+  title={MAGiSt3R: Multi-Agent Feed-forward 3D Reconstruction from Monocular RGB Videos},
+  author={Gong, Ziren and Li, Xiaohan and Tosi, Fabio and Xu, Ninghui and Mattoccia, Stefano and Cai, Jianfei and Poggi, Matteo},
+  booktitle={European Conference on Computer Vision},
+  year={2026}
 }
 ```
 
